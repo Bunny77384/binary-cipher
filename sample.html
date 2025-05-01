@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agent Cipher Riddle Mission</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+      body {
+        font-family: "Share Tech Mono", monospace;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        background-size: 400% 400%;
+        animation: backgroundShift 15s ease infinite;
+        color: #00ffcc;
+        padding: 20px;
+      }
+
+      @keyframes backgroundShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      h1,
+      p {
+        text-align: center;
+      }
+
+      h1 {
+        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+        animation: flicker 2s infinite alternate;
+      }
+
+      @keyframes flicker {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+          text-shadow: 0 0 3px #00ffff;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .stage {
+        display: none;
+        margin: auto;
+        max-width: 800px;
+        background-color: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(0, 255, 204, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+      }
+
+      .active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #controls {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      button {
+        background: transparent;
+        border: 2px solid #00ffcc;
+        color: #00ffcc;
+        padding: 12px 25px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background: #00ffcc;
+        color: #000;
+        box-shadow: 0 0 10px #00ffcc;
+      }
+
+      #progress {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #88ffee;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stageContainer">
+      <!-- All 10 stages from your original code go here -->
+      <!-- Example for Stage 1 -->
+      <div class="stage active">
+        <h1>Stage 1: Binary Code</h1>
+        <p>Hint: Binary reveals the plain truth.</p>
+        <p>
+          Decode this: <code>01001000 01100101 01101100 01101100 01101111</code>
+        </p>
+      </div>
+
+      <div class="stage">
+        <h1>Stage 2: Caesar Cipher</h1>
+        <p>Hint: Shifted by 3 places left.</p>
+        <p><code>Wklv lv d whvw phvvdjh</code></p>
+      </div>
+      <div class="stage">
+        <h1>Stage 3: Reverse Alphabet</h1>
+        <p>Hint: A becomes Z, B becomes Y...</p>
+        <p>Decode: <code>R H Z H V</code></p>
+      </div>
+      <div class="stage">
+        <h1>Stage 4: Binary to Decimal</h1>
+        <p>Hint: Numbers unlock letters.</p>
+        <p><code>01000011 01001111 01000100 01000101</code></p>
+      </div>
+      <div class="stage">
+        <h1>Stage 5: Reverse & Shift</h1>
+        <p>Hint: Reverse word then shift back by 1.</p>
+        <p>Clue: tijqqb</p>
+      </div>
+      <div class="stage">
+        <h1>Stage 6: Edge Letters</h1>
+        <p>Hint: First + last letters of each word.</p>
+        <p>Clue: Mission Started Now Get Ready Quickly</p>
+      </div>
+      <div class="stage">
+        <h1>Stage 7: Skip Letters</h1>
+        <p>Hint: Every second letter.</p>
+        <p>Clue: asbeccrrieett</p>
+      </div>
+      <div class="stage">
+        <h1>Stage 8: Number to Letters</h1>
+        <p>Hint: A=1, B=2, ..., Z=26</p>
+        <p><code>3-15-4-5</code></p>
+      </div>
+      <div class="stage">
+        <h1>Stage 9: Hidden Clue</h1>
+        <p>Hint: Check source code.</p>
+        <p>Clue: It lies in the dark...</p>
+        <!-- secret-password: shadowspeak -->
+      </div>
+
+
+      <div class="stage">
+        <h1>Stage 10: Final Anagram</h1>
+        <p>Hint: Rearrange the letters: <code>RACHTPEE</code></p>
+        <p>Form a meaningful word.</p>
+      </div>
+    </div>
+
+    <div id="controls">
+      <button onclick="prevStage()">Previous</button>
+      <button onclick="nextStage()">Next</button>
+    </div>
+
+    <script>
+      let currentStage = 0;
+      const stages = document.querySelectorAll(".stage");
+
+      function showStage(index) {
+        stages.forEach((stage) => stage.classList.remove("active"));
+        stages[index].classList.add("active");
+      }
+
+      function nextStage() {
+        currentStage = (currentStage + 1) % stages.length;
+        showStage(currentStage);
+      }
+
+      function prevStage() {
+        currentStage = (currentStage - 1 + stages.length) % stages.length;
+        showStage(currentStage);
+      }
+    </script>
+  </body>
+</html>
